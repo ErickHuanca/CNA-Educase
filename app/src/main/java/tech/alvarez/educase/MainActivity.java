@@ -55,27 +55,9 @@ public class MainActivity extends AppCompatActivity implements UnidadesEducativa
     }
 
     private void cargarDatos() {
-        DatosGobBoService service = ServiceGenerator.createService(DatosGobBoService.class);
-        Call<DatosResponse> call = service.establecimientosEducativos("b5da4242-1c90-47d9-b98f-bde1f35a0764", "miraflores");
 
-        call.enqueue(new Callback<DatosResponse>() {
-            @Override
-            public void onResponse(Call<DatosResponse> call, Response<DatosResponse> response) {
-                swipeRefreshLayout.setRefreshing(false);
+        // TODO: Hacer el request
 
-                if (response.isSuccessful()) {
-                    unidadesEducativasAdapter.setDataset(response.body().getResult().getRecords());
-                } else {
-                    Log.e("MIAPP ", "No se puede obtener los establecimientos");
-                }
-            }
-
-            @Override
-            public void onFailure(Call<DatosResponse> call, Throwable t) {
-                swipeRefreshLayout.setRefreshing(false);
-                Log.e("MIAPP", "Error obteniendo establecimientos: " + t.getMessage());
-            }
-        });
     }
 
 
